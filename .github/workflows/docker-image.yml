@@ -15,6 +15,6 @@
 
       - name: Build and push
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository }}/qwen-tts:latest
+          IMAGE_NAME=ghcr.io/${{ github.repository }}:latest
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
