@@ -1,0 +1,6 @@
+# RunPod Configuration for Serverless Endpoint
+
+# Configuration for RunPod serverless functions.
+
+[server]
+entry = "handler.py"  # Entry point for the serverless function
