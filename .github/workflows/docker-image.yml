@@ -25,6 +25,6 @@ jobs:
 
       - name: Build and push
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/qwen3-tts:latest
+          IMAGE_NAME=ghcr.io/leutenantroma/qwen3-tts:latest
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
