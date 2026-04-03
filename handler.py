@@ -5,7 +5,8 @@ import torch
 import runpod
 import soundfile as sf
 
-from transformers import AutoProcessor, AutoModel
+from transformers import AutoProcessor
+from transformers.dynamic_module_utils import get_class_from_dynamic_module
 
 MODEL_NAME = "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
 DEVICE = "cuda"
@@ -20,11 +21,12 @@ processor = AutoProcessor.from_pretrained(
     trust_remote_code=True
 )
 
-model = AutoModel.from_pretrained(
+model_class = get_class_from_dynamic_module(
     MODEL_NAME,
-    trust_remote_code=True
-).to(DEVICE)
+    "Qwen3TTSForConditionalGeneration"
+)
 
+model = model_class.from_pretrained(MODEL_NAME).to(DEVICE)
 model = model.half()
 model.eval()
 
