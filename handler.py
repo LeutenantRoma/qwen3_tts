@@ -11,7 +11,7 @@ MODEL_NAME = "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
 DEVICE = "cuda"
 
 # Optional: cache models (important for RunPod)
-os.environ["HF_HOME"] = "/runpod-volume/hf-cache"
+os.environ["HF_HOME"] = "/runpod-volume/huggingface-cache/hub"
 
 print("Loading model...")
 
