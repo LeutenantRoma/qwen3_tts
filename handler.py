@@ -15,13 +15,17 @@ os.environ["HF_HOME"] = "/runpod-volume/huggingface-cache/hub"
 
 print("Loading model...")
 
-processor = AutoProcessor.from_pretrained(MODEL_NAME, trust_remote_code=True)
+processor = AutoProcessor.from_pretrained(
+    MODEL_NAME,
+    trust_remote_code=True
+)
+
 model = AutoModel.from_pretrained(
     MODEL_NAME,
-    torch_dtype=torch.float16,
     trust_remote_code=True
 ).to(DEVICE)
 
+model = model.half()
 model.eval()
 
 print("Model loaded.")
